@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>
-    TinyApp
-  </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
+  <% include ../partials/_head %>
+  <% include ../partials/_header %>
 <body>
-  <h1>
-    TinyApp
-  </h1>
-  <p>Welcome to
-    TinyApp
-  </p>
-  <!--- <a href="> --->
-  <ul>
-  <% Object.entries(urls).forEach( link  => { %>
-  <li><%= link[0] %> <%= link[1] %></li>
-
-  <%	}); %>
-  </ul>
-
-  <a href="#">Home</a>
-
+  <h1>TinyApp</h1>
+  <p>Welcome to TinyApp</p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ShortURL</th>
+          <th scope="col">LongURL</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <%Object.entries(urls).forEach( link  => { %>
+      <tr>
+        <form method="POST" action="/urls/<%= link[0] %>/delete" style="display:inline;">
+          <td>
+            <%= link[0] %>
+          </td>
+          <td>
+            <a href="<%= link[1] %>"><%= link[1] %></a>
+          </td>
+          <td>
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </td>
+          <td>
+            <button class="btn btn-primary" type="submit">Edit</button>
+          </td>
+        </form>
+        <%}) %>
+      </tr>
+    </table>
+  </div>
 </body>
 
 </html>
