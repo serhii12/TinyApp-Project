@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <% include ../partials/_head %>
-  <% include ../partials/_header %>
 <body>
-  <h1>TinyApp</h1>
-  <p>Welcome to TinyApp</p>
+  <% include ../partials/_header %>
+  <div class='text'>
+    <h1>TinyApp</h1>
+    <p>Welcome to TinyApp</p>
+  </div>
   <div class="table-responsive">
     <table class="table">
       <thead class="thead-dark">
@@ -28,7 +30,7 @@
             <button class="btn btn-danger" type="submit">Delete</button>
           </td>
           <td>
-            <button class="btn btn-primary" type="submit">Edit</button>
+            <a href="/urls/<%= link[0] %>" class="btn btn-info"> Edit </a>
           </td>
         </form>
         <%}) %>

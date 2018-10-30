@@ -6,6 +6,7 @@ const app = express();
 const PORT = 8080;
 
 const generateRandomString = () => {
+  // A-Z-a-Z0-9
   const random = Math.random()
     .toString(36)
     .substring(7);
@@ -55,11 +56,16 @@ app.get('/u/:shortURL', (req, res) => {
 app.post('/urls', (req, res) => {
   const getShortVersion = generateRandomString();
   urlDatabase[getShortVersion] = req.body.longURL;
-  res.redirect(301, `/urls/${getShortVersion}`);
+  res.redirect(301, '/urls');
 });
 
 app.post('/urls/:id/delete', (req, res) => {
   delete urlDatabase[req.params.id];
+  res.redirect('/urls');
+});
+
+app.post('/urls/:id', (req, res) => {
+  urlDatabase[req.params.id] = req.body.longURL;
   res.redirect('/urls');
 });
 
