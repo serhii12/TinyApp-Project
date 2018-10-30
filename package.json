@@ -1,0 +1,33 @@
+{
+  "name": "tinyapp-project",
+  "version": "1.0.0",
+  "description": "The app will allow users to shorten long URLs much like TinyURL.com and bit.ly",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon -L express_server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serhii12/TinyApp-Project.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "express",
+    "js"
+  ],
+  "author": "Serhii Panchyshyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serhii12/TinyApp-Project/issues"
+  },
+  "homepage": "https://github.com/serhii12/TinyApp-Project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>New Urls</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+<body>
+  <% include ../partials/_header %>
+  <h1>Simplify your links</h1>
+  <form action="/urls" method="POST">
+    <label for="longURL">Enter a URL:</label>
+    <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
