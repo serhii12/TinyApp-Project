@@ -3,10 +3,12 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+// const bcrypt = require('bcrypt');
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
+// Helper function
 const generateRandomString = () => {
   const random = Math.random()
     .toString(36)
@@ -26,31 +28,38 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 
 const users = {
-  // userRandomID: {
-  //   id: 'userRandomID',
-  //   email: 'user@example.com',
-  //   password: 'purple-monkey-dinosaur',
-  // },
-  // user2RandomID: {
-  //   id: 'user2RandomID',
-  //   email: 'panchyshyn.serhii@gmail.com',
-  //   password: '12345678910',
-  // },
-  // user3RandomID: {
-  //   id: 'user3RandomID',
-  //   email: 'user3@example.com',
-  //   password: 'disWather-funk',
-  // },
-  // user4RandomID: {
-  //   id: 'user4RandomID',
-  //   email: 'user4@example.com',
-  //   password: 'disssa!Wather-funk',
-  // },
+  userRandomID: {
+    id: 'userRandomID',
+    email: 'user@example.com',
+    password: 'purple-monkey-dinosaur',
+  },
+  user2RandomID: {
+    id: 'user2RandomID',
+    email: 'panchyshyn.serhii@gmail.com',
+    password: '123',
+  },
+  user3RandomID: {
+    id: 'user3RandomID',
+    email: 'user3@example.com',
+    password: 'disWather-funk',
+  },
 };
 
 const urlDatabase = {
-  b2xVnl: 'http://www.lighthouselabs.ca',
-  '9sm5xK': 'http://www.google.com',
+  b2xVnl: { userID: 'user2RandomID', url: 'http://www.lighthouselabs.ca' },
+  b2x3nl: { userID: 'user3RandomID', url: 'http://www.stuf.ca' },
+  '9sm5xK': { userID: 'user2RandomID', url: 'http://www.google.com' },
+};
+
+// Helper function
+const urlsForUser = id => {
+  const newStuff = [];
+  Object.keys(urlDatabase).forEach(prop => {
+    if (urlDatabase[prop].userID === id) {
+      newStuff.push({ shortUrl: prop, longUrl: urlDatabase[prop].url });
+    }
+  });
+  return newStuff;
 };
 
 app.get('/', (req, res) => {
@@ -96,8 +105,9 @@ app.post('/register', (req, res) => {
 
 app.get('/urls', (req, res) => {
   if (req.cookies.user_id) {
+    const userUrls = urlsForUser(req.cookies.user_id);
     res.render('pages/urls_index', {
-      urls: urlDatabase,
+      urls: userUrls,
       user: users[req.cookies.user_id],
     });
   } else {
@@ -119,7 +129,7 @@ app.get('/urls/:id', (req, res) => {
   if (req.cookies.user_id) {
     res.render('pages/urls_show', {
       shortURL: req.params.id,
-      longURL: urlDatabase[req.params.id],
+      longURL: urlDatabase[req.params.id].url,
       user: users[req.cookies.user_id],
     });
   } else {
@@ -144,7 +154,7 @@ app.post('/urls/:id/delete', (req, res) => {
 });
 
 app.post('/urls/:id', (req, res) => {
-  urlDatabase[req.params.id] = req.body.longURL;
+  urlDatabase[req.params.id].url = req.body.longURL;
   res.redirect('/urls');
 });
 

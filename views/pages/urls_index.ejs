@@ -17,20 +17,20 @@
           <th scope="col">Edit</th>
         </tr>
       </thead>
-      <%Object.entries(urls).forEach( link  => { %>
+      <%urls.forEach( link  => { %>
       <tr>
-        <form method="POST" action="/urls/<%= link[0] %>/delete" style="display:inline;">
+        <form method="POST" action="/urls/<%= link.shortUrl %>/delete" style="display:inline;">
           <td>
-            <%= link[0] %>
+            <%= link.shortUrl %>
           </td>
           <td>
-            <a href="<%= link[1] %>"><%= link[1] %></a>
+            <a href="<%= link.longUrl %>"><%= link.longUrl %></a>
           </td>
           <td>
             <button class="btn btn-danger" type="submit">Delete</button>
           </td>
           <td>
-            <a href="/urls/<%= link[0] %>" class="btn btn-info"> Edit </a>
+            <a href="/urls/<%= link.shortUrl %>" class="btn btn-info"> Edit </a>
           </td>
         </form>
         <%}) %>
