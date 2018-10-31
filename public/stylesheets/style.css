@@ -12,6 +12,7 @@ ul {
 }
 
 li a{
+  list-style: none; 
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -30,4 +31,11 @@ header {
 
 h1 {
   text-align: center; 
+}
+
+.userLogin {
+  margin-top: 2rem;
+  font-size: 20px;
+  list-style: none;
+  color: greenyellow;
 }

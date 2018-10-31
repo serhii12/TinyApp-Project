@@ -7,7 +7,6 @@ const app = express();
 const PORT = 8080;
 
 const generateRandomString = () => {
-  // A-Z-a-Z0-9
   const random = Math.random()
     .toString(36)
     .substring(7);
@@ -28,23 +27,30 @@ const urlDatabase = {
 };
 
 app.get('/', (req, res) => {
-  // if user is logged in:
-  //  (Minor) redirect to /urls
-  console.log('Cookies: ', req.cookies);
-  // Cookies that have been signed
-  console.log('Signed Cookies: ', req.signedCookies);
   res.redirect(301, '/urls');
-  // if user is not logged in:
-  // (Minor) redirect to /login
+});
+
+app.post('/login', (req, res) => {
+  res.cookie('username', req.body.username);
+  res.redirect('/urls');
 });
 
 app.get('/urls', (req, res) => {
-  const templateVars = { urls: urlDatabase };
+  const templateVars = {
+    urls: urlDatabase,
+    username: req.cookies.username,
+  };
   res.render('pages/urls_index', templateVars);
 });
 
 app.get('/urls/new', (req, res) => {
-  res.render('pages/urls_new');
+  if (req.cookies.username) {
+    res.render('pages/urls_new', {
+      username: req.cookies.username,
+    });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 app.get('/urls/:id', (req, res) => {
@@ -73,14 +79,6 @@ app.post('/urls/:id/delete', (req, res) => {
 
 app.post('/urls/:id', (req, res) => {
   urlDatabase[req.params.id] = req.body.longURL;
-  res.redirect('/urls');
-});
-
-app.post('/login', (req, res) => {
-  console.log(req.cookie);
-  console.log(res.cookie('pumpkin', req.body.username));
-  // const userName = req.cookie.userName;
-  // console.log(userName);
   res.redirect('/urls');
 });
 
