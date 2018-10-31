@@ -27,3 +27,7 @@ header {
 .btn-special {
   margin-top: 2.5rem;
 }
+
+h1 {
+  text-align: center; 
+}

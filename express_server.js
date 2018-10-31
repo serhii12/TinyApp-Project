@@ -1,5 +1,6 @@
 // load the things we need
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -18,6 +19,9 @@ app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
+// cookies setup
+app.use(cookieParser());
+
 const urlDatabase = {
   b2xVnl: 'http://www.lighthouselabs.ca',
   '9sm5xK': 'http://www.google.com',
@@ -26,6 +30,9 @@ const urlDatabase = {
 app.get('/', (req, res) => {
   // if user is logged in:
   //  (Minor) redirect to /urls
+  console.log('Cookies: ', req.cookies);
+  // Cookies that have been signed
+  console.log('Signed Cookies: ', req.signedCookies);
   res.redirect(301, '/urls');
   // if user is not logged in:
   // (Minor) redirect to /login
@@ -66,6 +73,14 @@ app.post('/urls/:id/delete', (req, res) => {
 
 app.post('/urls/:id', (req, res) => {
   urlDatabase[req.params.id] = req.body.longURL;
+  res.redirect('/urls');
+});
+
+app.post('/login', (req, res) => {
+  console.log(req.cookie);
+  console.log(res.cookie('pumpkin', req.body.username));
+  // const userName = req.cookie.userName;
+  // console.log(userName);
   res.redirect('/urls');
 });
 
