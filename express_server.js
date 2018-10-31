@@ -25,28 +25,58 @@ app.use(cookieParser());
 // Method override
 app.use(methodOverride('_method'));
 
+const users = {
+  // userRandomID: {
+  //   id: 'userRandomID',
+  //   email: 'user@example.com',
+  //   password: 'purple-monkey-dinosaur',
+  // },
+  // user2RandomID: {
+  //   id: 'user2RandomID',
+  //   email: 'panchyshyn.serhii@gmail.com',
+  //   password: '12345678910',
+  // },
+  // user3RandomID: {
+  //   id: 'user3RandomID',
+  //   email: 'user3@example.com',
+  //   password: 'disWather-funk',
+  // },
+  // user4RandomID: {
+  //   id: 'user4RandomID',
+  //   email: 'user4@example.com',
+  //   password: 'disssa!Wather-funk',
+  // },
+};
+
 const urlDatabase = {
   b2xVnl: 'http://www.lighthouselabs.ca',
   '9sm5xK': 'http://www.google.com',
 };
 
 app.get('/', (req, res) => {
-  res.redirect(301, '/urls');
+  res.redirect(301, '/login');
 });
 
 app.get('/login', (req, res) => {
   res.render('pages/urls_login', {
-    username: req.cookies.username,
+    user: users[req.cookies.user_id],
   });
 });
 
 app.post('/login', (req, res) => {
-  res.cookie('username', req.body.username);
-  res.redirect('/urls');
+  const user = Object.values(users).find(prop => prop.email === req.body.email);
+  if (user) {
+    if (user.password === req.body.password) {
+      res.cookie('user_id', user.id);
+      res.redirect('/urls');
+    }
+  } else {
+    res.redirect('/register');
+  }
 });
 
 app.post('/logout', (req, res) => {
-  res.clearCookie('username');
+  res.clearCookie('user_id');
   res.redirect('/');
 });
 
@@ -54,11 +84,21 @@ app.get('/register', (req, res) => {
   res.render('pages/url_register');
 });
 
+app.post('/register', (req, res) => {
+  const getShortVersion = generateRandomString();
+  users[getShortVersion] = {
+    id: getShortVersion,
+    email: req.body.email,
+    password: req.body.password,
+  };
+  res.redirect('/login');
+});
+
 app.get('/urls', (req, res) => {
-  if (req.cookies.username) {
+  if (req.cookies.user_id) {
     res.render('pages/urls_index', {
       urls: urlDatabase,
-      username: req.cookies.username,
+      user: users[req.cookies.user_id],
     });
   } else {
     res.redirect('/login');
@@ -66,9 +106,9 @@ app.get('/urls', (req, res) => {
 });
 
 app.get('/urls/new', (req, res) => {
-  if (req.cookies.username) {
+  if (req.cookies.user_id) {
     res.render('pages/urls_new', {
-      username: req.cookies.username,
+      user: users[req.cookies.user_id],
     });
   } else {
     res.redirect('/login');
@@ -76,11 +116,11 @@ app.get('/urls/new', (req, res) => {
 });
 
 app.get('/urls/:id', (req, res) => {
-  if (req.cookies.username) {
+  if (req.cookies.user_id) {
     res.render('pages/urls_show', {
       shortURL: req.params.id,
       longURL: urlDatabase[req.params.id],
-      username: req.cookies.username,
+      user: users[req.cookies.user_id],
     });
   } else {
     res.redirect('/login');
