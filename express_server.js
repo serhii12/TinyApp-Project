@@ -2,6 +2,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const app = express();
 const PORT = 8080;
@@ -21,6 +22,9 @@ app.set('view engine', 'ejs');
 // cookies setup
 app.use(cookieParser());
 
+// Method override
+app.use(methodOverride('_method'));
+
 const urlDatabase = {
   b2xVnl: 'http://www.lighthouselabs.ca',
   '9sm5xK': 'http://www.google.com',
@@ -30,17 +34,30 @@ app.get('/', (req, res) => {
   res.redirect(301, '/urls');
 });
 
+app.get('/login', (req, res) => {
+  res.render('pages/urls_login', {
+    username: req.cookies.username,
+  });
+});
+
 app.post('/login', (req, res) => {
   res.cookie('username', req.body.username);
   res.redirect('/urls');
 });
 
+app.post('/logout', (req, res) => {
+  res.clearCookie('username', { path: '/login' });
+});
+
 app.get('/urls', (req, res) => {
-  const templateVars = {
-    urls: urlDatabase,
-    username: req.cookies.username,
-  };
-  res.render('pages/urls_index', templateVars);
+  if (req.cookies.username) {
+    res.render('pages/urls_index', {
+      urls: urlDatabase,
+      username: req.cookies.username,
+    });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 app.get('/urls/new', (req, res) => {
@@ -54,11 +71,15 @@ app.get('/urls/new', (req, res) => {
 });
 
 app.get('/urls/:id', (req, res) => {
-  const templateVars = {
-    shortURL: req.params.id,
-    longURL: urlDatabase[req.params.id],
-  };
-  res.render('pages/urls_show', templateVars);
+  if (req.cookies.username) {
+    res.render('pages/urls_show', {
+      shortURL: req.params.id,
+      longURL: urlDatabase[req.params.id],
+      username: req.cookies.username,
+    });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 app.get('/u/:shortURL', (req, res) => {

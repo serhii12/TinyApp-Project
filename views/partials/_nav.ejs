@@ -1,6 +1,7 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon">
+    </span>
     </button>
     <a class="navbar-brand" href="#">TinyApp</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -13,7 +14,11 @@
         </li>
       </ul>
       <li class="my-2 my-lg-0 userLogin">
-        <p>UserName</p>
+        <p>Username: <%= username %> </p>
       </li>
+      <form method="#"style="display:inline;" class="form-inline my-2 my-lg-0">
+        <!--- action="/logout"  --->
+        <input name='logout' class="btn btn-outline-success my-2 my-sm-0" type="submit" value='Logout'>
+      </form>
     </div>
-  </nav>
+</nav>
