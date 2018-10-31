@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon">
     </span>
     </button>
-    <a class="navbar-brand" href="#">TinyApp</a>
+    <a class="navbar-brand" href="/">TinyApp</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
@@ -16,8 +16,7 @@
       <li class="my-2 my-lg-0 userLogin">
         <p>Username: <%= username %> </p>
       </li>
-      <form method="#"style="display:inline;" class="form-inline my-2 my-lg-0">
-        <!--- action="/logout"  --->
+      <form method="POST" action="/logout" astyle="display:inline;" class="form-inline my-2 my-lg-0">
         <input name='logout' class="btn btn-outline-success my-2 my-sm-0" type="submit" value='Logout'>
       </form>
     </div>

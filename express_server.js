@@ -46,7 +46,12 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-  res.clearCookie('username', { path: '/login' });
+  res.clearCookie('username');
+  res.redirect('/');
+});
+
+app.get('/register', (req, res) => {
+  res.render('pages/url_register');
 });
 
 app.get('/urls', (req, res) => {
