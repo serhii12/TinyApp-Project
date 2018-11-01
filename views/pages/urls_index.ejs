@@ -5,7 +5,7 @@
   <% include ../partials/_nav %>
   <div class='text'>
     <h1>TinyApp</h1>
-    <p>Welcome to TinyApp</p>
+    <h2>Welcome to TinyApp</h2>
   </div>
   <div class="table-responsive">
     <table class="table">
@@ -21,10 +21,10 @@
       <tr>
         <form method="POST" action="/urls/<%= link.shortUrl %>/delete" style="display:inline;">
           <td>
-            <%= link.shortUrl %>
+            <a href="<%= link.longUrl %>">http://localhost:8080/u/<%= link.shortUrl %></a>
           </td>
           <td>
-            <a href="<%= link.longUrl %>"><%= link.longUrl %></a>
+            <a href="<%= link.longUrl %>"> <%= link.longUrl %></a>
           </td>
           <td>
             <button class="btn btn-danger" type="submit">Delete</button>

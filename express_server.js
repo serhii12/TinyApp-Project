@@ -3,7 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -31,17 +31,20 @@ const users = {
   userRandomID: {
     id: 'userRandomID',
     email: 'user@example.com',
-    password: 'purple-monkey-dinosaur',
+    password: '$2a$10$cmdCtLAKRFvsMUPxijHsLO2GRbVn54aCTqHxTTxNiijIB0kTvvwVW',
+    // password = 456;
   },
   user2RandomID: {
     id: 'user2RandomID',
     email: 'panchyshyn.serhii@gmail.com',
-    password: '123',
+    password: '$2a$10$JriaGRYRwR5OArQYg2H8Delv6Z3N5oenF9ieYfY.DHtn7gtRA/hXW',
+    // password = 123
   },
-  user3RandomID: {
-    id: 'user3RandomID',
-    email: 'user3@example.com',
-    password: 'disWather-funk',
+  user2RandomI: {
+    id: 'userRandomID',
+    email: 'use232@example.com',
+    password: '$2a$10$6tPf8fypNC0YVm3fo0XKJ.2T..8CdyznoX7oYlZaunyPnyguRd8PS',
+    // password = coolPassword212121dfscs
   },
 };
 
@@ -75,9 +78,11 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
   const user = Object.values(users).find(prop => prop.email === req.body.email);
   if (user) {
-    if (user.password === req.body.password) {
+    if (bcrypt.compareSync(req.body.password, user.password)) {
       res.cookie('user_id', user.id);
       res.redirect('/urls');
+    } else {
+      res.sendStatus(404);
     }
   } else {
     res.redirect('/register');
@@ -98,7 +103,7 @@ app.post('/register', (req, res) => {
   users[getShortVersion] = {
     id: getShortVersion,
     email: req.body.email,
-    password: req.body.password,
+    password: bcrypt.hashSync(req.body.password, 10),
   };
   res.redirect('/login');
 });
@@ -138,7 +143,7 @@ app.get('/urls/:id', (req, res) => {
 });
 
 app.get('/u/:shortURL', (req, res) => {
-  const longURL = urlDatabase[req.params.shortURL];
+  const longURL = urlDatabase[req.params.shortURL].url;
   res.redirect(longURL);
 });
 
