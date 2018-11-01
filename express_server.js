@@ -44,7 +44,7 @@ const users = {
   },
   user2RandomID: {
     id: 'user2RandomID',
-    email: 'panchyshyn.serhii@gmail.com',
+    email: 'u@ex.com',
     password: '$2a$10$JriaGRYRwR5OArQYg2H8Delv6Z3N5oenF9ieYfY.DHtn7gtRA/hXW',
     // password = 123
   },
