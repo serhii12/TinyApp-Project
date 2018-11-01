@@ -53,13 +53,13 @@ const urlDatabase = {
 
 // Helper function
 const urlsForUser = id => {
-  const newStuff = [];
+  const newLinks = [];
   Object.keys(urlDatabase).forEach(prop => {
     if (urlDatabase[prop].userID === id) {
-      newStuff.push({ shortUrl: prop, longUrl: urlDatabase[prop].url });
+      newLinks.push({ shortUrl: prop, longUrl: urlDatabase[prop].url });
     }
   });
-  return newStuff;
+  return newLinks;
 };
 
 app.get('/', (req, res) => {
@@ -144,7 +144,10 @@ app.get('/u/:shortURL', (req, res) => {
 
 app.post('/urls', (req, res) => {
   const getShortVersion = generateRandomString();
-  urlDatabase[getShortVersion] = req.body.longURL;
+  urlDatabase[getShortVersion] = {
+    userID: req.cookies.user_id,
+    url: req.body.longURL,
+  };
   res.redirect(301, '/urls');
 });
 
