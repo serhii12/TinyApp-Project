@@ -78,11 +78,14 @@ app.get('/', (req, res) => {
   res.redirect(301, '/login');
 });
 
+// GET Route to Show the Login Page
 app.get('/login', (req, res) => {
   res.render('pages/urls_login', {
     user: users[req.session.user_id],
   });
 });
+
+// Post Route to check user information on login
 
 app.post('/login', (req, res) => {
   const user = Object.values(users).find(prop => prop.email === req.body.email);
