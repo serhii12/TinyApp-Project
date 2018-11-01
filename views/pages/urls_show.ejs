@@ -4,7 +4,7 @@
 <body>
   <% include ../partials/_nav %>
   <h1>ShortURL: <%= shortURL %></h1>
-  <form method="POST" action="/urls/<%= shortURL %>">
+  <form method="POST" action="/urls/<%= shortURL %>?_method=PUT">
     <div class="container">
       <div class="row">
         <div class="col-md-4 ml-auto">

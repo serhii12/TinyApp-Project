@@ -18,6 +18,7 @@ const generateRandomString = () => {
 
 // view engine setup
 app.use(express.static(`${__dirname}/public`));
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
@@ -167,12 +168,12 @@ app.post('/urls', (req, res) => {
   res.redirect(301, '/urls');
 });
 
-app.post('/urls/:id/delete', (req, res) => {
+app.delete('/urls/:id/delete', (req, res) => {
   delete urlDatabase[req.params.id];
   res.redirect('/urls');
 });
 
-app.post('/urls/:id', (req, res) => {
+app.put('/urls/:id', (req, res) => {
   urlDatabase[req.params.id].url = req.body.longURL;
   res.redirect('/urls');
 });

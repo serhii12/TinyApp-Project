@@ -19,7 +19,7 @@
       </thead>
       <%urls.forEach( link  => { %>
       <tr>
-        <form method="POST" action="/urls/<%= link.shortUrl %>/delete" style="display:inline;">
+        <form method="POST" action="/urls/<%= link.shortUrl %>/delete?_method=DELETE" style="display:inline;">
           <td>
             <a href="<%= link.longUrl %>">http://localhost:8080/u/<%= link.shortUrl %></a>
           </td>
