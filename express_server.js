@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -17,10 +18,12 @@ const generateRandomString = () => {
 };
 
 // view engine setup
-app.use(express.static(`${__dirname}/public`));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
 
 // cookies setup
 app.use(
@@ -75,7 +78,7 @@ const urlsForUser = id => {
 
 // GET Route to Show the Home Page
 app.get('/', (req, res) => {
-  res.redirect(301, '/login');
+  res.render('pages/main-page');
 });
 
 // GET Route to Show the Login Page

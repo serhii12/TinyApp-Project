@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to right top,
+  rgba(134, 180, 236, 0.8),rgba(120,96,186,0.8)  60%,
+  rgba(237, 20, 91, 0.6));
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: white;
+  &__nav {
+    display: flex;
+    z-index: 3;
+    height: 8vh;
+    flex-direction: row;
+    width: 100%;
+    position: fixed;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    &__menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 30%;
+      &__link:hover {
+        color: lighten($yellow, 5%);
+      }
+    }
+  }
+  &__center {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    padding: 40px;
+    &__img {
+      width: 50%;
+    }
+    &__heading {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40%;
+    }
+  }
+  .btn-header {
+    background-color: $purple;
+    box-shadow: $shad;
+  }
+}
+

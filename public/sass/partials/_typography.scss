@@ -1,0 +1,72 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../../fonts/poppins/Poppins-SemiBold.ttf'); 
+}
+
+body {
+  font-family: Poppins-Regular, sans-serif;
+}
+
+a {
+  @include fontSize(13);
+  text-decoration: none;
+}
+
+.main-logo {
+  color: tomato;
+  @include fontSize(20);
+  font-family: Poppins-SemiBold;
+  word-spacing: 10px;
+}
+
+h1 {
+  @include fontSize(29);
+  text-align: center;
+  letter-spacing: 1.5px;
+  font-family: 'Nunito';
+}
+
+h1 > strong {
+  color: lighten(tomato, 10%)
+}
+
+h2 {
+  color: $black;
+  @include fontSize(25);
+  text-align: center;
+  letter-spacing: 1.5px;
+  font-family: 'Nunito';
+}
+
+h3 {
+  @include fontSize(18);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #6f6f6f;
+}
+
+.header-p {
+  text-align: center;
+  color: $white;
+}
+
+p {
+  text-align: center;
+  font-family: Poppins-Medium;
+  @include fontSize(15);
+}

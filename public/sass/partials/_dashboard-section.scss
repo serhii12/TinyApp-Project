@@ -1,0 +1,19 @@
+.dashboard {
+  display: flex;
+  padding-top: 5rem; 
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  padding: 40px;
+  border-bottom: 1px solid #dadfe1;
+  outline: none;
+  
+  &__text {
+    width: 40%;
+  }
+
+  &__img {
+    box-shadow: 0 0px 80px 10px rgba(0, 0, 0, 0.08);
+    width: 40%;
+  }
+}

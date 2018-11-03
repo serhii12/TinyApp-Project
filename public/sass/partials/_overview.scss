@@ -1,0 +1,22 @@
+.overview {
+  background: url(../images/section-bg-min.jpg) no-repeat bottom/cover;
+  padding: 10rem 0;
+  background-attachment: fixed;
+
+  &__text {
+    display: grid;
+    grid-template-columns: 1fr minmax(270px, 1170px) 1fr;
+    text-align: center;
+    margin: 0 auto 50px;
+    color: #fff;
+    line-height: 1.6;
+    
+    > * {
+      color: #fff;
+      grid-column: 2;
+    }
+    > a {
+      justify-self: center;
+    }
+  }
+}
