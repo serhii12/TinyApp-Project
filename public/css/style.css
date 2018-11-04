@@ -683,6 +683,105 @@ input[type="checkbox"]:checked ~ .mobile__nav {
           transform: translateX(0);
 }
 
+.login-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background: url(/images/photos/bg-01.jpg) no-repeat bottom/cover;
+}
+
+.login-wrapper input, .login-wrapper textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+}
+
+.login-wrapper input.input--error, .login-wrapper textarea.input--error {
+  border-color: red;
+}
+
+.login-wrapper label {
+  padding: 10px 0;
+  display: block;
+}
+
+.login-wrapper .form {
+  padding: 2rem;
+  background: -webkit-linear-gradient(top, #7579ff, #b224ef);
+  color: white;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.login-wrapper .form + .form {
+  margin-top: 4rem;
+}
+
+.login-wrapper .form .button {
+  margin-top: 2rem;
+  border-radius: 30px;
+  padding: 11px 25px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+
+.login-wrapper .form .slide-right:before {
+  text-align: left;
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 12px 0;
+  text-indent: 35px;
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+  background: #502F4C;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+  display: block;
+}
+
+.login-wrapper .form .slide-right:hover:before {
+  width: 100%;
+}
+
+.login-wrapper .action {
+  margin-top: 4rem;
+  background: #f1f8fc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+  width: 338px;
+}
+
+.login-wrapper .action > a {
+  color: #0d4ef7;
+}
+
 @media (max-width: 1150px) {
   .header__nav ul.header__nav__menu {
     display: none;

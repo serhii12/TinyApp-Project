@@ -1,0 +1,75 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url(/images/photos/bg-01.jpg) no-repeat bottom/cover;
+	input, textarea {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid $grey;
+		&.input {
+			&--error {
+				border-color: red;
+			}
+		}
+	}
+	label {
+		padding: 10px 0;
+		display: block;
+	}
+	.form {
+    padding: 2rem;
+    background: -webkit-linear-gradient(top, #7579ff, #b224ef);
+    color: white;
+		box-shadow: $shad;
+		&+.form {
+			margin-top: 4rem;
+    }
+    .button {
+      margin-top: 2rem;
+      border-radius: 30px;
+      padding: 11px 25px;
+      text-transform: uppercase;
+      overflow: hidden;
+      position: relative;
+    }
+    .slide-right {
+      &:before {
+        text-align: left;
+        content: attr(data-hover);
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 12px 0;
+        text-indent: 35px;
+        overflow: hidden;
+        width: 0;
+        white-space: nowrap;
+        background: #502F4C;
+        transition: width 0.5s;
+        display: block;
+      }
+      &:hover {
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .action {
+    margin-top: 4rem;
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: $shad;
+    width: 338px;
+    
+    > a {
+      color: $blue;
+    }
+  }
+}
