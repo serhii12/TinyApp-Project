@@ -15,50 +15,26 @@ ul {
 }
 
 .btn {
-  border-radius: 25px;
-  padding: 10px 25px;
+  border-radius: 30px;
+  padding: 11px 25px;
   z-index: 3;
 }
 
 .btn-heading {
   display: block;
   transition: 0.08s ease-in;
-  height: 45px;
-  width: 150px;
   margin: 10px 7px;
-  padding: 10px 5px;
+  padding: 15px 30px;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 2px;
-  border: 2px #383736 solid;
-  border-radius: 4px;
+  border-radius: 25px;
   text-transform: uppercase;
   z-index: 1;
   cursor: pointer;
   color: $white;
   background-color: $purple;
-  text-align: center;
   position: relative;
-}
-
-.fill:hover {
-  color: whitesmoke;
-}
-
-.fill:before {
-  content: "";
-  position: absolute;
-  background: #383736;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 100%;
-  z-index: -1;
-  transition: top 0.09s ease-in;
-}
-
-.fill:hover:before {
-  top: 0;
 }
 
 .wrapper {

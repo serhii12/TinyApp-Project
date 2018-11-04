@@ -1,19 +1,29 @@
 .dashboard {
   display: flex;
-  padding-top: 5rem; 
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
-  padding: 40px;
-  border-bottom: 1px solid #dadfe1;
+  padding: 100px 0;
   outline: none;
-  
+  background-color: $grey-shade;
+
   &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 40%;
+    h2 {
+      font-size: 2.2rem;
+    }
+    p {
+      font-family: Roboto, sans-serif;
+      font-size: 1.5rem;
+    }
   }
 
   &__img {
     box-shadow: 0 0px 80px 10px rgba(0, 0, 0, 0.08);
-    width: 40%;
+    width: 50%;
   }
 }

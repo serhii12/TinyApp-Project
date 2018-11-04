@@ -1,0 +1,33 @@
+@media (max-width: 1150px) {
+  .header__nav {
+    ul.header__nav__menu {
+      display: none;
+    }
+    &__hamburger--label {
+      display: block;
+    }
+  }
+
+  .header__center {
+    flex-wrap: wrap;
+    &__img {
+      width: 60%;
+    }
+
+    &__heading {
+      width: 100%;
+    }
+  }
+
+  .dashboard {
+    flex-wrap: wrap;
+    &__heading {
+      width: 100%;
+    }
+
+    &__img {
+      width: 100%;
+    }
+
+  }
+}

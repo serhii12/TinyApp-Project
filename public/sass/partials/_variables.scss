@@ -1,10 +1,13 @@
 $black: #171717;
 $width: 800px;
 $purple: #6e45e2;
-$yellow: #FFC40E;
+$yellow: #ffc40e;
 $pink: #ed145b;
-$green: #93FF00;
+$green: #93ff00;
 $blue: #0d4ef7;
 $white: #f1f8fc;
 $grey: lighten(grey, 40%);
-$shad: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+$shad: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+$gradient: linear-gradient(to right, $purple, #987ad4);
+$white-shade: #f0efed;
+$grey-shade: #fafafa;
