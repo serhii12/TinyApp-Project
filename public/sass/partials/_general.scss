@@ -1,0 +1,55 @@
+img {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+
+a {
+  color: $black;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn {
+  border-radius: 30px;
+  padding: 11px 25px;
+  z-index: 3;
+}
+
+.btn-heading {
+  display: block;
+  transition: 0.08s ease-in;
+  margin: 10px 7px;
+  padding: 15px 30px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  z-index: 1;
+  cursor: pointer;
+  color: $white;
+  background-color: $purple;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userLogin {
+  list-style: none;
+  color: rgb(28, 241, 28);
+  margin-right: 10px;
+  padding-top: 20px;
+}
+
+.btn-table {
+  background-color: $purple;
+}

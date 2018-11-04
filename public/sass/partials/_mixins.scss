@@ -1,0 +1,16 @@
+@mixin fontSize($sizeValue) {
+  font-size: $sizeValue * 1px;
+  font-size: ($sizeValue/10) * 1rem;
+}
+
+@mixin spacing($letter-spacing) {
+  letter-spacing: $letter-spacing;
+}
+
+@mixin abs-position ($top, $right, $bottom, $left) {
+  position: absolute; 
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

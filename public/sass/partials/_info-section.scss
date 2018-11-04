@@ -1,0 +1,38 @@
+.info {
+  padding: 100px 0;
+  outline: none;
+  &__center {
+    display: grid;
+    grid-template-columns: 1fr minmax(270px, 1170px) 1fr;
+    padding: 0 20px;
+    text-align: center;
+    margin: 0 auto 50px;
+    > * {
+      grid-column: 2;
+    }
+    p {
+      color: darken($blue, 30%);
+      line-height: 30px;
+      letter-spacing: 2px;
+    }
+  }
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(238px, 238px));
+    justify-content: space-around;
+    text-align: center;
+    &__item > img {
+      width: 150px;
+      height: 125px;
+      pointer-events: none;
+      user-select: none;
+      margin: 0px auto 40px;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &__item > p {
+      @include fontSize(13);
+      text-align: center;
+    }
+  }
+}

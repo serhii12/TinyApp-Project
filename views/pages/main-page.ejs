@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include ../partials/_head %>
+<body>
+  <header class="header">
+  <nav class="header__nav">
+    <div class="header__nav__logo">
+      <a class="main-logo" href="#">
+        <img class="main-logo__img" src="images/icons/logo.png" alt="TinyApp logo">
+      </a>
+    </div>
+    <ul class="header__nav__menu">
+      <li class="header__nav__menu__item">
+        <a href="#" class="header__nav__menu__link">Pricing</a>
+      </li>
+      <li class="header__nav__menu__item">
+        <a href="/login" class="header__nav__menu__link">Login</a>
+      </li>
+      <li class="header__nav__menu__item">
+        <a href="/register" class="header__nav__menu__link btn-header btn fill">Get Started</a>
+      </li>
+    </ul>
+    <input id="nav" style="display:none" type="checkbox">
+    <label class="header__nav__hamburger--label" for="nav">
+      <i class="fas fa-bars header__nav__hamburger"></i>
+    </label>
+    <div class="mobile__nav">
+      <ul>
+        <li class="mobile__nav__item mobile__nav__close">
+          <label for="nav">X</label>
+        </li>
+        <li>
+          <a class="mobile__nav__item" href="#">Pricing</a>
+        </li>
+        <li>
+          <a class="mobile__nav__item" href="/login">Login</a>
+        </li>
+        <li>
+          <a class="mobile__nav__item" href="/register">Get started</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="header__center">
+    <div class="header__center__img">
+      <img src="./images/photos/stats.png" alt="stats">
+    </div>
+    <div class="header__center__heading">
+      <h1>
+        Professional, secure <strong>URL shortening</strong> service to create links which you can
+        manage, track and share. Create a short <strong>URL</strong> today using TinyApp!
+      </h1>
+      <p class="header-p">
+        Our system allows you to track everything. Whether it is the amount of clicks, the country or the referrer,
+        the data is there.
+      </p>
+      <a href="/register" class="btn-heading fill">Get Started</a>
+    </div>
+  </div>
+  </header>
+
+  <section class="info">
+  <div class="wrapper">
+    <div class="info__center">
+      <h2>
+        One short link, infinite possibilities.
+      </h2>
+      <p>
+        A short link is a powerful marketing tool when you use it carefully. It is not just a link but a medium
+        between your customer and their destination. A short link allows you to collect so much data about your
+        customers and their behaviors.
+      </p>
+    </div>
+    <div class="info__gallery">
+      <div class="info__gallery__item">
+        <img src="./images/photos/lock.png" alt="">
+        <h3>
+          Password Protect
+        </h3>
+        <p>
+          Set a password to protect your links from unauthorized access.
+        </p>
+      </div>
+      <div class="info__gallery__item">
+        <img src="./images/photos/globe.png" alt="">
+        <h3>
+          Geotarget
+        </h3>
+        <p>
+          Geotarget your links to redirect visitors to specialized pages and increase your conversion.
+        </p>
+      </div>
+      <div class="info__gallery__item">
+        <img src="./images/photos/case.png" alt="">
+        <h3>
+          Bundle
+        </h3>
+        <p>
+          Bundle your links for easy access and share them with the public on your public profile.
+        </p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="dashboard">
+  <div class="dashboard__text">
+    <h2>
+      One dashboard to manage everything.
+    </h2>
+    <p>
+      Our dashboard lets you control everything. Manage your URLs, create bundles, manage your splash pages and your
+      settings, all from the same dashboard.
+    </p>
+  </div>
+  <div class="dashboard__img">
+    <img src="./images/photos/dashboard.png" alt="dashboard">
+  </div>
+  </section>
+
+  <section class="overview">
+  <div class="overview__text">
+    <h3>
+      The Ultimate URL Shortener that's simple,
+      powerful, and easy
+    </h3>
+    <p>
+      Unleash the Power of the Link
+    </p>
+    <a href="/register" class="btn-heading fill">Get Started</a>
+  </div>
+  </section>
+
+  <footer>
+  2018 &copy; Serhii Panchsyhyn
+  </footer>
+</body>
+</html>
