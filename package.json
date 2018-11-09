@@ -4,7 +4,8 @@
   "description": "The app will allow users to shorten long URLs much like TinyURL.com and bit.ly",
   "main": "index.js",
   "scripts": {
-    "start": "node express_server.js"
+    "start": "node express_server.js",
+    "local": "./node_modules/.bin/nodemon -e js express_server.js"
   },
   "repository": {
     "type": "git",
